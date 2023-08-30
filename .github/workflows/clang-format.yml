@@ -1,0 +1,13 @@
+name: Clang-format checker
+on:
+  pull_request:
+jobs:
+  clang-format-checking:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: RafikFarhad/clan-format-github-action@v3
+        with:
+          sources: "project/Source/**/*.cpp,project/Source/**/*.hpp,project/Source/**/*.h,project/Source/**/*.c"
+          style: file
+          
