@@ -3,4 +3,4 @@
 #include "moon_attacks.h"
 #include "Modules/ModuleManager.h"
 
-IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, moon_attacks, "moon_attacks" );
+IMPLEMENT_PRIMARY_GAME_MODULE(FDefaultGameModuleImpl, moon_attacks, "moon_attacks");
