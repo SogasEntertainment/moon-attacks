@@ -7,7 +7,3 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: RafikFarhad/clang-format-github-action@v3
-        with:
-          sources: "project/Source/**/*.cpp,project/Source/**/*.hpp,project/Source/**/*.h,project/Source/**/*.c"
-          style: file
-          
