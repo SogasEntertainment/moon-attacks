@@ -4,13 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "moon_attacksGameModeBase.generated.h"
+#include "MoonAttacksGameModeBase.generated.h"
 
-/**
- *
- */
 UCLASS()
-class MOON_ATTACKS_API Amoon_attacksGameModeBase : public AGameModeBase
+class MOONATTACKS_API AMoonAttacksGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 };
