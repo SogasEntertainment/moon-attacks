@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "moon_attacks",
+			"Name": "MoonAttacks",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
