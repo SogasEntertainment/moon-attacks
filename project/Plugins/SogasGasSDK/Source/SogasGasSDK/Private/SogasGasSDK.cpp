@@ -16,5 +16,5 @@ void FSogasGasSDKModule::ShutdownModule()
 }
 
 #undef LOCTEXT_NAMESPACE
-	
+
 IMPLEMENT_MODULE(FSogasGasSDKModule, SogasGasSDK)
