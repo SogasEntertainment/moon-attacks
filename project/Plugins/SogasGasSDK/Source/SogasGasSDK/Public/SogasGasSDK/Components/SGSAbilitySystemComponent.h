@@ -8,7 +8,7 @@
  * Abstract AbilitySystemComponent that extends its functionality.
  * Allows to grant default abilities and attributes.
  */
-UCLASS()
+UCLASS(meta = (BlueprintSpawnableComponent))
 class SOGASGASSDK_API USGSAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()

@@ -1,4 +1,4 @@
-#include "Components/SGSAbilitySystemComponent.h"
+#include "SogasGasSDK/Components/SGSAbilitySystemComponent.h"
 
 void USGSAbilitySystemComponent::InitAbilityActorInfo(AActor* InOwnerActor, AActor* InAvatarActor)
 {
