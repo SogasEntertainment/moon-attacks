@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "Abilities/GameplayAbility.h"
 #include "SGSGameplayAbility.generated.h"
 
@@ -10,11 +11,11 @@
 UCLASS()
 class SOGASGASSDK_API USGSGameplayAbility : public UGameplayAbility
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
 public:
-    USGSGameplayAbility();
+	USGSGameplayAbility();
 
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Ability")
-    bool bActivateAbilityOnGranted = false;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Ability")
+	bool bActivateAbilityOnGranted = false;
 };
