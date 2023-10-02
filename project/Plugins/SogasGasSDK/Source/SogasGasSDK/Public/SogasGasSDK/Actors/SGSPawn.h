@@ -23,5 +23,6 @@ public:
 	//~ End APawn
 
 private:
+	UPROPERTY()
 	USGSAbilitySystemComponent* AbilitySystemComponent = nullptr;
 };

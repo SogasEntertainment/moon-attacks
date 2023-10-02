@@ -25,5 +25,6 @@ public:
 	//~ End AActor
 
 private:
+	UPROPERTY()
 	UAbilitySystemComponent* AbilitySystemComponent = nullptr;
 };

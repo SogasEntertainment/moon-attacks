@@ -21,5 +21,6 @@ public:
     //~ Begin IAbilitySystemInterface
 
 private:
+    UPROPERTY()
     USGSAbilitySystemComponent* AbilitySystemComponent = nullptr;
 };
