@@ -7,5 +7,5 @@
 UCLASS()
 class MOONATTACKS_API AMoonPlayerController : public ASGSPlayerController
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 };
