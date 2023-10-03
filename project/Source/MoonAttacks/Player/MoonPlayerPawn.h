@@ -3,7 +3,7 @@
 #include "InputActionValue.h"
 #include "SogasGasSDK/Actors/SGSPawn.h"
 
-#include "MoonCharacter.generated.h"
+#include "MoonPlayerPawn.generated.h"
 
 class UArrowComponent;
 class UCapsuleComponent;
@@ -14,12 +14,12 @@ class UInputAction;
 class UInputMappingContext;
 
 UCLASS()
-class MOONATTACKS_API AMoonCharacter : public ASGSPawn
+class MOONATTACKS_API AMoonPlayerPawn : public ASGSPawn
 {
 	GENERATED_BODY()
 
 public:
-	AMoonCharacter();
+	AMoonPlayerPawn();
 
 protected:
 	void BeginPlay() override;
