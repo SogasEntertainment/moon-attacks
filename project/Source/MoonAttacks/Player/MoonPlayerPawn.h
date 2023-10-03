@@ -1,7 +1,7 @@
 #pragma once
 
+#include "GameFramework/Pawn.h"
 #include "InputActionValue.h"
-#include "SogasGasSDK/Actors/SGSPawn.h"
 
 #include "MoonPlayerPawn.generated.h"
 
@@ -14,7 +14,7 @@ class UInputAction;
 class UInputMappingContext;
 
 UCLASS()
-class MOONATTACKS_API AMoonPlayerPawn : public ASGSPawn
+class MOONATTACKS_API AMoonCharacter : public APawn
 {
 	GENERATED_BODY()
 
