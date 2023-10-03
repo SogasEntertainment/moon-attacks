@@ -26,5 +26,5 @@ public:
 
 private:
 	UPROPERTY()
-	UAbilitySystemComponent* AbilitySystemComponent = nullptr;
+	TObjectPtr<USGSAbilitySystemComponent> AbilitySystemComponent = nullptr;
 };
