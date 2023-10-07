@@ -8,6 +8,7 @@
 class UArrowComponent;
 class UCapsuleComponent;
 class UFloatingPawnMovement;
+class UMoonBaseAttributeSet;
 class USphereComponent;
 class UStaticMeshComponent;
 class UInputAction;
@@ -29,6 +30,10 @@ protected:
 	void Pause(const FInputActionValue& InActionValue);
 	void Shoot(const FInputActionValue& InActionValue);
 
+	//~ Begin APawn interface
+	void PossessedBy(AController* NewController) override;
+	//~ End APawn interface
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* MoonCharacterContext = nullptr;
 
@@ -40,6 +45,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* ShootAction = nullptr;
+
+	UPROPERTY()
+	const UMoonBaseAttributeSet* BaseAttributeSet = nullptr;
 
 private:
 	void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;

@@ -5,7 +5,7 @@ ASGSPlayerState::ASGSPlayerState()
 	AbilitySystemComponent = CreateDefaultSubobject<USGSAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 }
 
-UAbilitySystemComponent* ASGSPlayerState::GetAbilitySystemComponent() const
+USGSAbilitySystemComponent* ASGSPlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
