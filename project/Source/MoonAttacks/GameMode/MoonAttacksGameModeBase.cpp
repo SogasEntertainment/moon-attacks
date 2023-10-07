@@ -3,5 +3,5 @@
 
 void AMoonAttacksGameModeBase::PlayerDied()
 {
-    UKismetSystemLibrary::QuitGame(GetWorld(), nullptr, EQuitPreference::Quit, false);
+	UKismetSystemLibrary::QuitGame(GetWorld(), nullptr, EQuitPreference::Quit, false);
 }
