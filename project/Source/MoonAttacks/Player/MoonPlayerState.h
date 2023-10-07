@@ -14,7 +14,7 @@ class MOONATTACKS_API AMoonPlayerState : public ASGSPlayerState
 public:
 	AMoonPlayerState();
 
-	template<class T>
+	template <class T>
 	const T* GetAttributeSet(TSubclassOf<T> InAttributeSetClass) const
 	{
 		if (auto AttributeSet = GetAbilitySystemComponent()->GetAttributeSet(InAttributeSetClass))
