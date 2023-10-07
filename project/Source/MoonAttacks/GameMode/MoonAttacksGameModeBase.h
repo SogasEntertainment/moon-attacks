@@ -10,4 +10,8 @@ UCLASS()
 class MOONATTACKS_API AMoonAttacksGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+
+	void PlayerDied();
 };

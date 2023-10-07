@@ -8,4 +8,8 @@ UCLASS()
 class MOONATTACKS_API AMoonPlayerController : public ASGSPlayerController
 {
 	GENERATED_BODY()
+
+public:
+	UFUNCTION(Exec)
+	void Kill();
 };
