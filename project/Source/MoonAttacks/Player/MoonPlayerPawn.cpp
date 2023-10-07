@@ -9,6 +9,8 @@
 #include "GameFramework/FloatingPawnMovement.h"
 #include "InputAction.h"
 #include "Kismet/GameplayStatics.h"
+#include "MoonAttacks/Abilities/AttributeSets/MoonBaseAttributeSet.h"
+#include "MoonPlayerState.h"
 
 AMoonPlayerPawn::AMoonPlayerPawn()
 {
@@ -76,10 +78,10 @@ void AMoonPlayerPawn::Move(const FInputActionValue& InActionValue)
 	const FRotator YawRotator(0.f, Rotation.Yaw, 0.f);
 
 	const auto ForwardVector = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
-	AddMovementInput(ForwardVector, value.Y);
+	AddMovementInput(ForwardVector, value.Y * BaseAttributeSet->GetSpeed());
 
 	const auto RightVector = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::Y);
-	AddMovementInput(RightVector, value.X);
+	AddMovementInput(RightVector, value.X * BaseAttributeSet->GetSpeed());
 }
 
 void AMoonPlayerPawn::Pause(const FInputActionValue& /*InActionValue*/)
@@ -97,7 +99,17 @@ void AMoonPlayerPawn::Shoot(const FInputActionValue& InActionValue)
 	}
 }
 
-void AMoonPlayerPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void AMoonCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (auto PlayerStatePtr = GetPlayerState<AMoonPlayerState>())
+	{
+		BaseAttributeSet = PlayerStatePtr->GetAttributeSet<UMoonBaseAttributeSet>(UMoonBaseAttributeSet::StaticClass());
+	}
+}
+
+void AMoonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	check(PlayerInputComponent);
 
