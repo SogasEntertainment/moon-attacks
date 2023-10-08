@@ -14,12 +14,14 @@ class MOONATTACKS_API AMoonPlayerState : public ASGSPlayerState
 public:
 	AMoonPlayerState();
 
+	void BeginPlay() override;
+
 	template <class T>
-	const T* GetAttributeSet(TSubclassOf<T> InAttributeSetClass) const
+	T* GetAttributeSet(TSubclassOf<T> InAttributeSetClass) const
 	{
 		if (auto AttributeSet = GetAbilitySystemComponent()->GetAttributeSet(InAttributeSetClass))
 		{
-			return Cast<T>(AttributeSet);
+			return const_cast<T*>(Cast<T>(AttributeSet));
 		}
 
 		return nullptr;
@@ -39,4 +41,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "MoonAttacks|Attributes")
 	float GetMaxSpeed() const;
+
+protected:
+	FDelegateHandle OnHealthChangedDelegateHandle;
+
+	virtual void OnHealthChanged(const FOnAttributeChangeData& InData);
 };

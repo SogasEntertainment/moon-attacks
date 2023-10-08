@@ -26,7 +26,7 @@ AMoonPlayerPawn::AMoonPlayerPawn()
 
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/EngineMeshes/Sphere"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/EngineMeshes/Cube"));
 
 	check(Cube.Succeeded());
 

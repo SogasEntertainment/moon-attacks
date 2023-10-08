@@ -1,8 +1,21 @@
 #include "MoonPlayerState.h"
 #include "MoonAttacks/Abilities/AttributeSets/MoonBaseAttributeSet.h"
+#include "MoonAttacks/GameMode/MoonAttacksGameModeBase.h"
+#include "MoonPlayerPawn.h"
 
 AMoonPlayerState::AMoonPlayerState()
 {
+}
+
+void AMoonPlayerState::BeginPlay()
+{
+	if (auto ASC = GetAbilitySystemComponent())
+	{
+		if (auto AttributeSet = GetAttributeSet<UMoonBaseAttributeSet>(UMoonBaseAttributeSet::StaticClass()))
+		{
+			OnHealthChangedDelegateHandle = ASC->GetGameplayAttributeValueChangeDelegate(AttributeSet->GetHealthAttribute()).AddUObject(this, &AMoonPlayerState::OnHealthChanged);
+		}
+	}
 }
 
 bool AMoonPlayerState::IsAlive() const
@@ -48,4 +61,19 @@ float AMoonPlayerState::GetMaxSpeed() const
 	}
 
 	return 0.0f;
+}
+
+void AMoonPlayerState::OnHealthChanged(const FOnAttributeChangeData& InData)
+{
+	auto Player = Cast<AMoonPlayerPawn>(GetPawn());
+
+	if (IsValid(Player) && !IsAlive())
+	{
+		GetAbilitySystemComponent()->CancelAllAbilities();
+
+		if (auto MoonGameMode = Cast<AMoonAttacksGameModeBase>(GetWorld()->GetAuthGameMode()))
+		{
+			MoonGameMode->PlayerDied();
+		}
+	}
 }
