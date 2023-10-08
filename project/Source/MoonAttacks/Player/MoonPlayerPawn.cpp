@@ -1,5 +1,5 @@
 
-#include "MoonCharacter.h"
+#include "MoonPlayerPawn.h"
 #include "Components/ArrowComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/SphereComponent.h"
@@ -10,7 +10,7 @@
 #include "InputAction.h"
 #include "Kismet/GameplayStatics.h"
 
-AMoonCharacter::AMoonCharacter()
+AMoonPlayerPawn::AMoonPlayerPawn()
 {
 	// Not necessary at the moment.
 	PrimaryActorTick.bCanEverTick = false;
@@ -55,7 +55,7 @@ AMoonCharacter::AMoonCharacter()
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
 
-void AMoonCharacter::BeginPlay()
+void AMoonPlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -68,7 +68,7 @@ void AMoonCharacter::BeginPlay()
 	}
 }
 
-void AMoonCharacter::Move(const FInputActionValue& InActionValue)
+void AMoonPlayerPawn::Move(const FInputActionValue& InActionValue)
 {
 	const auto value = InActionValue.Get<FVector2D>();
 
@@ -82,13 +82,13 @@ void AMoonCharacter::Move(const FInputActionValue& InActionValue)
 	AddMovementInput(RightVector, value.X);
 }
 
-void AMoonCharacter::Pause(const FInputActionValue& /*InActionValue*/)
+void AMoonPlayerPawn::Pause(const FInputActionValue& /*InActionValue*/)
 {
 	const auto World = GetWorld();
 	UGameplayStatics::SetGamePaused(World, !UGameplayStatics::IsGamePaused(World));
 }
 
-void AMoonCharacter::Shoot(const FInputActionValue& InActionValue)
+void AMoonPlayerPawn::Shoot(const FInputActionValue& InActionValue)
 {
 	const auto value = InActionValue.Get<bool>();
 	if (value)
@@ -97,15 +97,15 @@ void AMoonCharacter::Shoot(const FInputActionValue& InActionValue)
 	}
 }
 
-void AMoonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void AMoonPlayerPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	check(PlayerInputComponent);
 
 	// CastChecked because if input component cast fails, we do not want to continue. So crash the game ...
 	if (auto EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMoonCharacter::Move);
-		EnhancedInputComponent->BindAction(PauseAction, ETriggerEvent::Triggered, this, &AMoonCharacter::Pause);
-		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &AMoonCharacter::Shoot);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMoonPlayerPawn::Move);
+		EnhancedInputComponent->BindAction(PauseAction, ETriggerEvent::Triggered, this, &AMoonPlayerPawn::Pause);
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &AMoonPlayerPawn::Shoot);
 	}
 }
