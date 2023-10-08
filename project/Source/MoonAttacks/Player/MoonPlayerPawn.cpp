@@ -99,7 +99,7 @@ void AMoonPlayerPawn::Shoot(const FInputActionValue& InActionValue)
 	}
 }
 
-void AMoonCharacter::PossessedBy(AController* NewController)
+void AMoonPlayerPawn::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
@@ -109,7 +109,7 @@ void AMoonCharacter::PossessedBy(AController* NewController)
 	}
 }
 
-void AMoonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void AMoonPlayerPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	check(PlayerInputComponent);
 

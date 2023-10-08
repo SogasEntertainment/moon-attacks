@@ -15,7 +15,7 @@ class UInputAction;
 class UInputMappingContext;
 
 UCLASS()
-class MOONATTACKS_API AMoonCharacter : public APawn
+class MOONATTACKS_API AMoonPlayerPawn : public APawn
 {
 	GENERATED_BODY()
 
