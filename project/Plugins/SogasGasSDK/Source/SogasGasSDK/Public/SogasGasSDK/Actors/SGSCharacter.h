@@ -1,26 +1,28 @@
 #pragma once
 
+#include "CoreMinimal.h"
+
 #include "AbilitySystemInterface.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 #include "SogasGasSDK/Components/SGSAbilitySystemComponent.h"
 
-#include "SGSPawn.generated.h"
+#include "SGSCharacter.generated.h"
 
 UCLASS()
-class SOGASGASSDK_API ASGSPawn : public APawn, public IAbilitySystemInterface
+class SOGASGASSDK_API ASGSCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	ASGSPawn();
+	ASGSCharacter();
 
 	//~ Begin IAbilitySystemInterface
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	//~ End IAbilitySystemInterface
 
-	//~ Begin APawn
-	virtual void PossessedBy(AController* InNewController);
-	//~ End APawn
+	//~ Begin AActor
+	void PossessedBy(AController* InNewController) override;
+	//~ End AActor
 
 private:
 	UPROPERTY()

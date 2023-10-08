@@ -1,16 +1,16 @@
-#include "SogasGasSDK/Actors/SGSPawn.h"
+#include "SogasGasSDK/Actors/SGSCharacter.h"
 
-ASGSPawn::ASGSPawn()
+ASGSCharacter::ASGSCharacter()
 {
 	AbilitySystemComponent = CreateDefaultSubobject<USGSAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 }
 
-UAbilitySystemComponent* ASGSPawn::GetAbilitySystemComponent() const
+UAbilitySystemComponent* ASGSCharacter::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
 
-void ASGSPawn::PossessedBy(AController* InNewController)
+void ASGSCharacter::PossessedBy(AController* InNewController)
 {
 	Super::PossessedBy(InNewController);
 
