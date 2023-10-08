@@ -3,7 +3,7 @@
 #include "GameFramework/Pawn.h"
 #include "InputActionValue.h"
 
-#include "MoonCharacter.generated.h"
+#include "MoonPlayerPawn.generated.h"
 
 class UArrowComponent;
 class UCapsuleComponent;
@@ -15,12 +15,12 @@ class UInputAction;
 class UInputMappingContext;
 
 UCLASS()
-class MOONATTACKS_API AMoonCharacter : public APawn
+class MOONATTACKS_API AMoonPlayerPawn : public APawn
 {
 	GENERATED_BODY()
 
 public:
-	AMoonCharacter();
+	AMoonPlayerPawn();
 
 protected:
 	void BeginPlay() override;

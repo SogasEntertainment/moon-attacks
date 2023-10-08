@@ -1,7 +1,7 @@
 #include "MoonPlayerState.h"
 #include "MoonAttacks/Abilities/AttributeSets/MoonBaseAttributeSet.h"
 #include "MoonAttacks/GameMode/MoonAttacksGameModeBase.h"
-#include "MoonCharacter.h"
+#include "MoonPlayerPawn.h"
 
 AMoonPlayerState::AMoonPlayerState()
 {
@@ -65,7 +65,7 @@ float AMoonPlayerState::GetMaxSpeed() const
 
 void AMoonPlayerState::OnHealthChanged(const FOnAttributeChangeData& InData)
 {
-	auto Player = Cast<AMoonCharacter>(GetPawn());
+	auto Player = Cast<AMoonPlayerPawn>(GetPawn());
 
 	if (IsValid(Player) && !IsAlive())
 	{
