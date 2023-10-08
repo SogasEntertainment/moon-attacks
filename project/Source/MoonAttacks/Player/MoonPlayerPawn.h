@@ -1,20 +1,21 @@
 #pragma once
 
+#include "GameFramework/Pawn.h"
 #include "InputActionValue.h"
-#include "SogasGasSDK/Actors/SGSPawn.h"
 
 #include "MoonPlayerPawn.generated.h"
 
 class UArrowComponent;
 class UCapsuleComponent;
 class UFloatingPawnMovement;
+class UMoonBaseAttributeSet;
 class USphereComponent;
 class UStaticMeshComponent;
 class UInputAction;
 class UInputMappingContext;
 
 UCLASS()
-class MOONATTACKS_API AMoonPlayerPawn : public ASGSPawn
+class MOONATTACKS_API AMoonPlayerPawn : public APawn
 {
 	GENERATED_BODY()
 
@@ -29,6 +30,10 @@ protected:
 	void Pause(const FInputActionValue& InActionValue);
 	void Shoot(const FInputActionValue& InActionValue);
 
+	//~ Begin APawn interface
+	void PossessedBy(AController* NewController) override;
+	//~ End APawn interface
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* MoonCharacterContext = nullptr;
 
@@ -40,6 +45,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* ShootAction = nullptr;
+
+	UPROPERTY()
+	const UMoonBaseAttributeSet* BaseAttributeSet = nullptr;
 
 private:
 	void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;

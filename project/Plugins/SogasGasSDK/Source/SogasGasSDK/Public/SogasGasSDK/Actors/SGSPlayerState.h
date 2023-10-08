@@ -17,10 +17,10 @@ public:
     ASGSPlayerState();
 
     //~ Begin IAbilitySystemInterface
-    UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+    USGSAbilitySystemComponent* GetAbilitySystemComponent() const override;
     //~ Begin IAbilitySystemInterface
 
 private:
-    UPROPERTY()
+    UPROPERTY(VisibleAnywhere)
     TObjectPtr<USGSAbilitySystemComponent> AbilitySystemComponent = nullptr;
 };

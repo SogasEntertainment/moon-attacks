@@ -4,6 +4,21 @@
 #include "CoreMinimal.h"
 #include "SGSAbilitySystemComponent.generated.h"
 
+class UDataTable;
+class USGSAttributeSet;
+
+USTRUCT()
+struct FSGSAttributeApplication
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<USGSAttributeSet> AttributeSetType;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UDataTable> InitializationData;
+};
+
 /*
  * Abstract AbilitySystemComponent that extends its functionality.
  * Allows to grant default abilities and attributes.
@@ -23,10 +38,13 @@ public:
 	TArray<TSubclassOf<UGameplayAbility>> DefaultAbilities;
 
 	UPROPERTY(EditDefaultsOnly, Category = Ability)
-	TArray<TSubclassOf<UAttributeSet>> DefaultAttributes;
+	TArray<FSGSAttributeApplication> DefaultAttributes;
 
 protected:
 	void GrantDefaultAbilitiesAndAttributes();
 
 	TArray<FGameplayAbilitySpecHandle> DefaultAbililtiesHandles;
+
+	UPROPERTY(transient)
+	TArray<USGSAttributeSet*> AddedAttributes;
 };
