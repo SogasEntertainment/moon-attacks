@@ -17,6 +17,6 @@ public class MoonAttacks : ModuleRules
             "SogasGasSDK"
         });
 
-        PrivateDependencyModuleNames.AddRange(new string[] { });
+        PrivateDependencyModuleNames.AddRange(new string[] { "GameplayAbilities" });
     }
 }
